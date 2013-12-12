@@ -23,14 +23,16 @@ XHR.prototype.get = function(url, onSuccess, onError, extraParams) {
 	extraParams.ttl = extraParams.ttl || false; 
 	extraParams.shouldAuthenticate = extraParams.shouldAuthenticate || false; // if you set this to true, pass "username" and "password" as well
 	extraParams.contentType = extraParams.contentType || "application/json";
-		
+	extraParams.timeout = extraParams.timeout || 30000;
+	
 	var cache = readCache(url);
 	// If there is nothing cached, send the request
 	if (!extraParams.ttl || cache == 0) {
 		
 		// Create the HTTP connection
 		var xhr = Titanium.Network.createHTTPClient({
-			enableKeepAlive: false
+			enableKeepAlive: false,
+			timeout : extraParams.timeout
 		});
 		// Create the result object
 		var result = {};
@@ -103,10 +105,12 @@ XHR.prototype.post = function(url, data, onSuccess, onError, extraParams) {
 	extraParams.async = (extraParams.hasOwnProperty('async')) ? extraParams.async : true;
 	extraParams.shouldAuthenticate = extraParams.shouldAuthenticate || false; // if you set this to true, pass "username" and "password" as well
 	extraParams.contentType = extraParams.contentType || "application/json";
+	extraParams.timeout = extraParams.timeout || 30000;
 	
 	// Create the HTTP connection
 	var xhr = Titanium.Network.createHTTPClient({
-		enableKeepAlive: false
+		enableKeepAlive: false,
+		timeout : extraParams.timeout
 	});
 	// Create the result object
 	var result = {};
@@ -156,10 +160,12 @@ XHR.prototype.put = function(url, data, onSuccess, onError, extraParams) {
 	extraParams.async = (extraParams.hasOwnProperty('async')) ? extraParams.async : true;
 	extraParams.shouldAuthenticate = extraParams.shouldAuthenticate || false; // if you set this to true, pass "username" and "password" as well
 	extraParams.contentType = extraParams.contentType || "application/json";
+	extraParams.timeout = extraParams.timeout || 30000;
 	
 	// Create the HTTP connection
 	var xhr = Titanium.Network.createHTTPClient({
-		enableKeepAlive: false
+		enableKeepAlive: false,
+		timeout : extraParams.timeout
 	});
 	// Create the result object
 	var result = {};
@@ -211,10 +217,12 @@ XHR.prototype.destroy = function(url, onSuccess, onError, extraParams) {
 	extraParams.async = (extraParams.hasOwnProperty('async')) ? extraParams.async : true;
 	extraParams.shouldAuthenticate = extraParams.shouldAuthenticate || false; // if you set this to true, pass "username" and "password" as well
 	extraParams.contentType = extraParams.contentType || "application/json";
+	extraParams.timeout = extraParams.timeout || 30000;
 	
 	// Create the HTTP connection
 	var xhr = Titanium.Network.createHTTPClient({
-		enableKeepAlive: false
+		enableKeepAlive: false,
+		timeout : extraParams.timeout
 	});
 	// Create the result object
 	var result = {};
